@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="164.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.freshek.dziennikplus.LoginController">
+	<children>
+		<Label alignment="CENTER" prefHeight="15.0" prefWidth="612.0" text="Zaloguj się" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+			<VBox.margin>
+				<Insets bottom="30.0" top="10.0" />
+			</VBox.margin>
+		</Label>
+		<HBox alignment="CENTER" prefHeight="71.0" prefWidth="451.0">
+			<children>
+				<VBox prefHeight="100.0" prefWidth="93.0">
+					<children>
+						<Label prefHeight="24.0" prefWidth="45.0" text="e-mail:" />
+						<Label prefHeight="24.0" prefWidth="45.0" text="hasło:" />
+						<Label prefHeight="24.0" text="id klienta:" />
+					</children>
+				</VBox>
+				<VBox prefHeight="200.0" prefWidth="250.0">
+					<children>
+						<TextField fx:id="emailField" />
+						<PasswordField fx:id="passField" />
+						<TextField fx:id="idField" />
+					</children>
+				</VBox>
+			</children>
+		</HBox>
+		<Button mnemonicParsing="false" onAction="#login" text="Zaloguj">
+			<VBox.margin>
+				<Insets left="350.0" top="5.0" />
+			</VBox.margin>
+		</Button>
+	</children>
+</VBox>

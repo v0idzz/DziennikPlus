@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.freshek.dziennikplus.Controller">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="Okno">
+               <items>
+                  <MenuItem fx:id="closeWinItem" mnemonicParsing="false" text="Zamknij" />
+                  <MenuItem fx:id="hideWinItem" mnemonicParsing="false" text="Schowaj" />
+                  <MenuItem fx:id="settingsItem" mnemonicParsing="false" text="Ustawienia" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Dane">
+               <items>
+                  <MenuItem fx:id="refreshItem" mnemonicParsing="false" text="Odśwież" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Pomoc">
+               <items>
+                  <MenuItem fx:id="aboutItem" mnemonicParsing="false" text="O Dzienniku+" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab text="Oceny">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="gradesTable" layoutX="59.0" layoutY="46.0" prefHeight="312.0" prefWidth="600.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columns>
+                              <TableColumn id="column" fx:id="subjectColumn" prefWidth="119.0" text="Przedmiot" />
+                              <TableColumn id="column" fx:id="gradesColumn" prefWidth="284.0" text="Oceny" />
+                              <TableColumn id="column" fx:id="predictedGradesAvgColumn" prefWidth="133.0" text="Średnia przew." />
+                              <TableColumn id="column" fx:id="gradesAvgColumn" prefWidth="133.0" text="Średnia" />
+                              <TableColumn id="column" fx:id="calculatedGradesAvgColumn" prefWidth="133.0" text="Średnia wylicz." />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="317.0" text="Status: pobieranie danych z vulcan.uonet.pl" AnchorPane.bottomAnchor="6.0" fx:id="statusLbl"/>
+                        <Separator layoutX="304.0" layoutY="316.0" orientation="VERTICAL" prefHeight="17.0" AnchorPane.bottomAnchor="5.0" prefWidth="11.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Uwagi">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>
