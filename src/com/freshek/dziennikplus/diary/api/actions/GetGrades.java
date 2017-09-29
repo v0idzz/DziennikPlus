@@ -1,7 +1,8 @@
 package com.freshek.dziennikplus.diary.api.actions;
 
 import com.freshek.dziennikplus.diary.objects.Grade;
-import com.freshek.dziennikplus.diary.objects.GradesTableRow;
+import com.freshek.dziennikplus.diary.objects.GradesList;
+import com.freshek.dziennikplus.ui.GradeTableEntry;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,10 +14,12 @@ import java.util.List;
  * Created by Freshek on 18.09.17.
  */
 public class GetGrades implements IAPIAction {
-    private final String endpoint = "/Oceny.mvc/Wszystkie";
+
+    public GetGrades() {}
 
     @Override
     public String getEndpoint() {
+        String endpoint = "/Oceny.mvc/Wszystkie";
         return endpoint;
     }
 
@@ -36,14 +39,14 @@ public class GetGrades implements IAPIAction {
 
         List<Element> rows = table.getElementsByTag("tr");
 
-        List<GradesTableRow> res = new ArrayList<>();
+        List<GradeTableEntry> res = new ArrayList<>();
         for (int i = 1; i < rows.size(); i++) { //i = 1, because we skip first row
             List<Element> cells = rows.get(i).getElementsByTag("td");
 
             String subject = cells.get(0).text();
 
             List<Element> gradesHtml = cells.get(1).getElementsByTag("span");
-            List<Grade> grades = new ArrayList<>();
+            GradesList grades = new GradesList();
 
             for (Element element : gradesHtml) {
                 grades.add(Grade.gradeFromHtml(element));
@@ -52,7 +55,7 @@ public class GetGrades implements IAPIAction {
             String prAvg = cells.get(2).text();
             String cAvg = cells.get(3).text();
 
-            res.add(new GradesTableRow(subject, grades, prAvg, cAvg));
+            res.add(new GradeTableEntry(subject, grades, prAvg, cAvg));
         }
 
         return res;

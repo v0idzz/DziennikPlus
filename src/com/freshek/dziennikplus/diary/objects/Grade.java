@@ -10,11 +10,23 @@ public class Grade {
     private int gradeValue;
     private GradeModifier gradeModifier;
     private int gradeWeight;
+    private boolean isInvaild;
+
+    private String textGrade;
 
     public Grade(int gradeValue, GradeModifier gradeModifier, int gradeWeight) {
         this.gradeValue = gradeValue;
         this.gradeModifier = gradeModifier;
         this.gradeWeight = gradeWeight;
+
+        if (this.gradeValue == -1) {
+            this.isInvaild = true;
+        }
+    }
+
+    public Grade(String textGrade) {
+        this.textGrade = textGrade;
+        this.isInvaild = true;
     }
 
     public int getGradeValue() {
@@ -27,6 +39,10 @@ public class Grade {
 
     public int getGradeWeight() {
         return gradeWeight;
+    }
+
+    public boolean getIsInvaild() {
+        return isInvaild;
     }
 
     public void setGradeValue(int value) {
@@ -44,6 +60,9 @@ public class Grade {
     @Override
     public String toString() {
         // TODO: 18.09.17 Make the code more readable
+        if (getIsInvaild())
+            return textGrade;
+
         return getGradeValue() + (getGradeModifier() != GradeModifier.None ? (getGradeModifier() == GradeModifier.Plus ? "+" : "-") : "");
     }
 
@@ -63,7 +82,13 @@ public class Grade {
 
             String gradeText = gradeElement.text();
 
+            if (gradeText.length() == 0)
+                return new Grade(gradeText);
+
             gradeValue = Character.getNumericValue(gradeElement.text().charAt(0));
+
+            if (gradeValue == -1)
+                return new Grade(gradeText);
 
             if (gradeText.length() >= 2) {
                 if (gradeText.charAt(1) == '+') {

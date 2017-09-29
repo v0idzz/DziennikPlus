@@ -1,10 +1,12 @@
 package com.freshek.dziennikplus.diary.api;
 
 import com.freshek.dziennikplus.diary.api.actions.GetGrades;
+import com.freshek.dziennikplus.diary.api.actions.GetSchedule;
 import com.freshek.dziennikplus.diary.api.actions.IAPIAction;
+import com.freshek.dziennikplus.diary.objects.tables.ScheduleTableRow;
+import com.freshek.dziennikplus.ui.GradeTableEntry;
 import com.freshek.dziennikplus.utils.http.Form;
 import com.freshek.dziennikplus.utils.http.HttpUtil;
-import com.freshek.dziennikplus.diary.objects.GradesTableRow;
 import org.apache.http.message.BasicNameValuePair;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -90,7 +92,11 @@ public class UonetPlusAPI {
         return action.parseResult(httpUtil.get(url));
     }
 
-    public List<GradesTableRow> getGradesEntries() {
-        return (List<GradesTableRow>)apiGet(new GetGrades());
+    public List<GradeTableEntry> getGradesEntries() {
+        return (List<GradeTableEntry>)apiGet(new GetGrades());
+    }
+
+    public List<ScheduleTableRow> getScheduleEntries() {
+        return (List<ScheduleTableRow>)apiGet(new GetSchedule());
     }
 }

@@ -22,6 +22,8 @@ public class MathUtil {
         float sum = 0f;
         float count = 0f;
         for (Grade g : grades) {
+            if (g.getIsInvaild()) continue;
+
             count += g.getGradeWeight();
             sum += g.getGradeValue() * g.getGradeWeight();
             if (g.getGradeModifier() == GradeModifier.Plus)
